@@ -4,7 +4,7 @@
 /* variables */
 :root{
     --primary: #4f515a;
-    --secondary: #ebeeb;
+    --secondary: #ebebeb;
     --warning: #da0f41;
 }
 
@@ -69,4 +69,6 @@ input, textarea{
     color: var(--warning);
     font-size: 14px;
     margin: 16px 0;
+    /* position: absolute; */
+    word-break: break-all;
 }

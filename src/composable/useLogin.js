@@ -13,8 +13,7 @@ const login = async ( email, password ) => {
         return res
     } catch(err) {
         let ermsg = err.message
-        error.value = ermsg
-
+        error.value = 'Incorrect login credentials'
         console.log(err.code)
     }
 }
