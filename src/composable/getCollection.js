@@ -16,9 +16,13 @@ const getCollection = (collection) => {
 
     const unsub = collectionRef.onSnapshot((snap) => {
         let results = []
-        console.log('snapshot')
         snap.docs.forEach(doc => {
+
         // must wait for the server to create the timestamp & send it back
+        // let a = 5;
+        // let b = 1;    Here, if doc.data().createdAt === true, then, results.push()....will be run,
+        // b && (a = 6);         that means, we are waiting for the server to create the timestamp & send it back
+        // console.log(a); //6
             doc.data().createdAt && results.push({
                 ...doc.data(),
                 id: doc.id
