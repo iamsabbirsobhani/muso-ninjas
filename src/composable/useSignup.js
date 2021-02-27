@@ -6,10 +6,11 @@ import {
 } from '../firebase/config'
 
 const error = ref(null)
+const isPending = ref(false)
 
 const signup = async (email, password, displayname) => {
     error.value = null
-
+    isPending.value = true
     try {
         const res = await projectAuth.createUserWithEmailAndPassword(email, password)
 
@@ -20,6 +21,8 @@ const signup = async (email, password, displayname) => {
         await res.user.updateProfile({
             displayName: displayname
         })
+
+        isPending.value = false
         error.value = null
         return res
     } catch (err) {
@@ -31,7 +34,8 @@ const signup = async (email, password, displayname) => {
 const useSignup = () => {
     return {
         error,
-        signup
+        signup,
+        isPending
     }
 }
 
