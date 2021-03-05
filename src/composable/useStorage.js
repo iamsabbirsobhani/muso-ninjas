@@ -1,5 +1,6 @@
 import { ref } from '@vue/reactivity'
 import { projectStorage } from '../firebase/config'
+import getUser from './getUser'
 
 const { user } = getUser()
 
@@ -21,7 +22,7 @@ const useStorage = () => {
         }
     }
 
-    return { url, filepath, error}
+    return { url, filepath, error, uploadImage}
 }
 
 export default useStorage

@@ -17,20 +17,25 @@
 
     <button>Create</button>
   </form>
+  <img src="url" alt="">
 </template>
 
 <script>
+import useStorage from '@/composable/useStorage'
 import { ref } from "vue";
 export default {
   setup() {
+    const { filePath, url, uploadImage } = useStorage()
+
     const title = ref("");
     const description = ref("");
     const file = ref("")
     const fileError = ref("")
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       if(file.value) {
-        console.log(title.value, description.value, file.value);
+        await uploadImage(file.value)
+        console.log('image uploaded, url: ', url.value)
       }
     };
 
@@ -50,7 +55,7 @@ export default {
       }
     }
 
-    return { title, description, handleSubmit, handleChange, fileError };
+    return { title, description, handleSubmit, handleChange, fileError, url };
   },
 };
 </script>
