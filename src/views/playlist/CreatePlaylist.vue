@@ -9,7 +9,9 @@
     ></textarea>
     <!-- upload playlist image -->
     <label>Upload Playlist cover image</label>
-    <input type="file" />
+    <input type="file" @change="handleChange"/>
+
+    <div class="error">{{ fileError }}</div>
 
     <div class="error"></div>
 
@@ -23,12 +25,32 @@ export default {
   setup() {
     const title = ref("");
     const description = ref("");
+    const file = ref("")
+    const fileError = ref("")
 
     const handleSubmit = () => {
-      console.log(title.value, description.value);
+      if(file.value) {
+        console.log(title.value, description.value, file.value);
+      }
     };
 
-    return { title, description, handleSubmit };
+    const handleChange = (e) => {
+      const selected = e.target.files[0]
+
+      // allowed file types
+      const fileType = ['image/png', 'image/jpeg']
+
+      if(selected && fileType.includes(selected.type)){
+        file.value = selected
+        console.log(file.value)
+        fileError.value = null
+      } else {
+        file.value = null
+        fileError.value = "Please select an image file (png or jpeg)"
+      }
+    }
+
+    return { title, description, handleSubmit, handleChange, fileError };
   },
 };
 </script>
