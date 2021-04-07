@@ -18,7 +18,7 @@
     <button v-if="!isPending">Create</button>
     <button v-else disabled>Sending...</button>
   </form>
-  <img src="url" alt="" />
+  <!-- <img :src="url" alt="" /> -->
 </template>
 
 <script>
