@@ -3,14 +3,7 @@
     <!-- <p>Homepage</p> -->
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="documents">
-      <div v-for="doc in documents" :key="doc.id" class="playlist">
-        <h1>{{ doc.title }}</h1>
-        <p>{{ doc.userName }}</p>
-        <p>{{ doc.description }}</p>
-        <div class="img">
-          <img :src="doc.coverUrl" alt="" />
-        </div>
-      </div>
+      <ListView :playlists="documents"/>
     </div>
   </div>
 </template>
@@ -18,7 +11,9 @@
 <script>
 import { watch, ref } from "vue";
 import getCollection from "../composable/getCollection";
+import ListView from '../components/ListView.vue';
 export default {
+  components: { ListView },
   name: "Home",
   setup() {
     const { error, documents } = getCollection("playlists");
