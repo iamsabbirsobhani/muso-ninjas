@@ -52,5 +52,5 @@ projectAuth.onAuthStateChanged(() => {
 
     // ----
 
-    // Now we have solved the problem of waiting for the app to initially mount until Firebase determine whether user "logged in" initially or not.
+    // Now we have solved the problem. Now, it's waiting for the "app" to initially mount, until "Firebase" determine whether user "logged in" initially or not.
 })
