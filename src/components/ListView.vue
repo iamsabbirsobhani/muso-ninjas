@@ -2,7 +2,7 @@
   <div v-for="playlist in playlists" :key="playlist.id">
     <div class="single">
       <div class="thumbnail">
-        <img :src="playlist.coverUrl" alt="Thumbnail" />
+        <img :src="playlist.coverUrl" alt="Thumbnail"/>
       </div>
       <div class="info">
         <h3>{{ playlist.title }}</h3>
@@ -34,21 +34,21 @@ export default {
   transform: scale(1.02);
   transition: all ease 0.2s;
 }
-.thumbnail{
-    max-width: 100px;
-    max-height: 100px;
-    overflow: hidden;
-    border-radius: 10px;
+.thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+  overflow: hidden;  /* images exceed with the max-width and max-height, will not be displayed */
+  border-radius: 10px;
 }
-img{
-    max-width: 150%;
-    max-height: 150%;
-    display: block;
+img {
+  max-width: 150%;
+  max-height: 150%;
+  display: block;
 }
-.info{
-    margin: 0 30px;
+.info {
+  margin: 0 30px;
 }
-.song-number{
-    margin-left: auto;
+.song-number {
+  margin-left: auto;
 }
 </style>
